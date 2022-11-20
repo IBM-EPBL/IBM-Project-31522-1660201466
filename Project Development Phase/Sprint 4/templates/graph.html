@@ -1,0 +1,45 @@
+{% extends "basel.html" %}
+{% block title %}Graph{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Graph</title>
+</head>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<center>
+<body>
+	<h3>Graphical Analysis</h3>
+	<div id="myChart" style="width:100%; max-width:600px; height:500px;" ></div>
+<script>
+
+google.charts.load('current',{packages:['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+
+var data = google.visualization.arrayToDataTable([
+  ['Mode', 'Amount'],
+  ['Cash', {{g_cash}}],
+  ['Online Payment', {{g_online}}],
+  ['Debitcard', {{g_debit}}],
+  ['Creditcard', {{g_credit}}]
+]);
+
+var options = {
+  title: 'Your Expenses',
+  is3D: true
+};
+
+var chart = new google.visualization.PieChart(document.getElementById('myChart'));
+chart.draw(data, options);
+
+}
+</script>
+
+</body>
+</center>
+</html>
+{% endblock %}
