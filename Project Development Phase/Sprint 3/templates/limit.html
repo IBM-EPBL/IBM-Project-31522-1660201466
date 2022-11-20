@@ -1,0 +1,31 @@
+{% extends "basel.html" %}
+{% block title %}Limit{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Add limit</title>
+</head>
+<center>
+<body>
+
+<h2>Add Limit</h2>
+
+<h3>This is your Current limit</h3>
+<div class="col-md-2 mt-3" > ₹<span style=" color: rgb(255, 0, 0) "> {{ current }} </div>
+
+<form action="{{ url_for("addlimit")}}" method="POST">
+        <label>Add limit:</label>
+        <input type="number" min="0" name="limit" id="limit">
+        <span style="color:red">{{ limitmsg }}</span>
+        <br><br>
+
+        <input type="submit" name="submit">
+        <br><br>
+
+</body>
+</center>
+</html>
+{% endblock %}
