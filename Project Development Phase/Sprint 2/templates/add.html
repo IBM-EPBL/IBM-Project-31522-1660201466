@@ -1,0 +1,59 @@
+{% extends "basel.html" %}
+{% block title %}Signin Page{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Add Expense</title>
+</head>
+<center>
+<body>
+    <h1>Add Expense</h1>
+ 
+    <form action="{{ url_for("addexpense")}}" method="POST">
+
+        <label>Date:</label>
+        <input type="date" name="date" id="date">
+        <span style="color:red">{{ datemsg }}</span>
+        <br><br>
+ 		
+ 		<label>Time:</label>
+        <input type="time" name="time" id="time">
+        <span style="color:red">{{ timemsg }}</span>
+        <br><br>
+
+        <label>Expense Name:</label>
+        <input type="text" name="expensename" id="expensename">
+        <span style="color:red">{{ expnamemsg }}</span>
+        <br><br>        
+
+        <label>Amount:</label>
+        <input type="number" min="0" name="amount" id="amount">
+        <span style="color:red">{{ expamntmsg }}</span>
+        <br><br>
+
+        <label for=""></label>
+        <select name="mode" id="mode">
+            <option selected hidden>Mode</option>
+            <option name="cash" value="cash">cash</option>
+            <option name="onlinepayment" value="onlinepayment">onlinepayment</option>
+            <option name="debitcard" value="debitcard">debitcard</option>
+            <option name="creditcard" value="creditcard">creditcard</option>
+        </select>
+        <span style="color:red">{{ modemsg }}</span>
+        <br><br>
+
+
+
+
+        <input type="submit" name="add">
+        <br><br>
+ 
+    </form>
+</body>
+</center>
+ 
+</html>
+{% endblock %}
